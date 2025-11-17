@@ -81,6 +81,27 @@ body {
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
+/* Estilos para o subtítulo (apenas desktop) */
+.main-subtitle {
+    position: absolute;
+    top: 110px; /* Posicionado abaixo do main-maxim */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #888;
+    text-align: center;
+    max-width: 80%;
+    z-index: 50;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.main-subtitle.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
 
 .logo-hub {
     position: relative;
@@ -97,9 +118,8 @@ body {
 
 .logo-container { 
     position: relative; 
-    width: 150px; 
-    height: 150px; 
-    /* NEW: Adiciona cursor pointer para indicar que é clicável */
+    width: 200px; 
+    height: 200px; 
     cursor: pointer; 
 }
 .logo-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity 0.5s ease-in-out; }
@@ -268,7 +288,7 @@ body {
 .main-footer {
     position: absolute;
     bottom: 20px; /* Distância do fundo da página */
-    right: 20px; /* Alinha à direita */
+    right: 40px; /* Alinha à direita */
     z-index: 100; /* Garante que fique acima de outros elementos */
     opacity: 1; /* Visível por padrão na página inicial */
     transition: opacity 0.5s ease;
@@ -282,11 +302,17 @@ body {
 .social-icons {
     display: flex;
     gap: 10px; /* Espaço entre os ícones */
+    align-items: center;
+}
+
+.social-icons p{
+    color: #888;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
 }
 
 /* Estilos para os ícones Font Awesome (tag <i>) */
 .social-icons i {
-    font-size: 24px; /* Tamanho dos ícones */
+    font-size: 30px; /* Tamanho dos ícones */
     color: #888; /* Cor dos ícones, pode ser ajustada para combinar com o tema */
     filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)); /* Sombra suave para destacar */
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -300,10 +326,15 @@ body {
 
 /* MEDIA QUERIES PARA RESPONSIVIDADE */
 @media (max-width: 768px) {
+    /* Esconde o subtítulo no mobile */
+    .main-subtitle {
+        display: none;
+    }
+
     /* Ajuste para a máxima no mobile */
     .main-maxim {
-        top: 30px; 
-        font-size: 1.2rem; 
+        top: 30px;
+        font-size: 1.2rem;
     }
     
     /* Ajuste do hub para acomodar a máxima */

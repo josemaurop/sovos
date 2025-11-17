@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectorTitle = document.getElementById('sector-title');
     const sectorDescription = document.getElementById('sector-description'); 
     const resetButton = document.getElementById('reset-button');
-    const mainFooter = document.getElementById('main-footer'); 
-    const mainMaxim = document.getElementById('main-maxim'); 
+    const mainFooter = document.getElementById('main-footer');
+    const mainMaxim = document.getElementById('main-maxim');
+    const mainSubtitle = document.querySelector('.main-subtitle'); 
 
     const logoContainer = document.querySelector('.logo-container'); 
 
@@ -149,8 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         logoHub.classList.add('hidden');
-        mainFooter.classList.add('hidden'); 
-        mainMaxim.classList.add('hidden'); 
+        mainFooter.classList.add('hidden');
+        mainMaxim.classList.add('hidden');
+        if (mainSubtitle) mainSubtitle.classList.add('hidden'); 
     }
 
     // Event listeners para os setores
@@ -204,9 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
         mainMaxim.classList.remove('text-formacao', 'text-evangelizacao', 'text-musica', 'text-arte'); 
 
         setTimeout(() => {
-            logoHub.classList.remove('hidden'); 
-            mainFooter.classList.remove('hidden'); 
-            mainMaxim.classList.remove('hidden'); 
+            logoHub.classList.remove('hidden');
+            mainFooter.classList.remove('hidden');
+            mainMaxim.classList.remove('hidden');
+            if (mainSubtitle) mainSubtitle.classList.remove('hidden');
         }, 500); 
     });
 });
