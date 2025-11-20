@@ -10,16 +10,12 @@
 
     /* Cores de Texto (Lealdade à Identidade) */
     --txt-formacao: #000000;
-    /* Ouro escuro para leitura */
     --txt-evangelizacao: #FFC300;
-    /* Vermelho vivo */
     --txt-musica: #93FECA;
-    /* Verde/Esmeralda */
     --txt-arte: #FEA9BE;
-    /* Azul Celeste vibrante */
 
     --logo-desktop: 240px;
-    --logo-mobile: 160px;
+    --logo-mobile: 140px;
 }
 
 * {
@@ -33,6 +29,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -221,7 +218,7 @@ body {
 }
 
 
-/* --- 4. NAVEGAÇÃO SIMPLES E LEAL --- */
+/* --- 4. NAVEGAÇÃO --- */
 .nav-item {
     position: absolute;
     background: none;
@@ -241,13 +238,10 @@ body {
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #555;
-    /* Cor neutra inicial */
     transition: all 0.3s ease;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0);
-    /* Sombra invisível */
 }
 
-/* Posicionamento */
 .position-top {
     top: 50px;
     left: 50%;
@@ -272,15 +266,12 @@ body {
     transform: translateY(-50%);
 }
 
-/* HOVER: LEALDADE À COR E SIMPLICIDADE */
+/* HOVER */
 .nav-item:hover .nav-text {
     transform: scale(1.1);
-    /* Cresce levemente */
-    /* Sombra branca para garantir leitura se o fundo for da mesma cor */
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-/* Cores Específicas no Hover */
 .nav-item[data-sector="formacao"]:hover .nav-text {
     color: var(--txt-formacao);
 }
@@ -297,12 +288,11 @@ body {
     color: var(--txt-arte);
 }
 
-/* DARK MODE (Texto branco para os itens não ativos) */
+/* DARK MODE */
 body.dark-mode .nav-text {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Mas o item em hover continua com a cor da marca (ou branco brilhante se preferir) */
 body.dark-mode .nav-item:hover .nav-text {
     opacity: 1;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
@@ -497,11 +487,18 @@ body.dark-mode .social-dock i {
     pointer-events: none;
 }
 
-/* --- RESPONSIVIDADE --- */
+/* --- RESPONSIVIDADE (Mobile Fix) --- */
 @media (max-width: 768px) {
     body {
         justify-content: flex-start;
         padding-top: 10px;
+        /* CORREÇÃO PRINCIPAL: Habilita rolagem se necessário */
+        height: auto;
+        min-height: 100dvh;
+        /* Garante altura mínima, mas deixa crescer */
+        overflow-y: auto;
+        /* Permite rolar */
+        overflow-x: hidden;
     }
 
     .brand-header {
@@ -527,14 +524,13 @@ body.dark-mode .social-dock i {
     .sacred-core {
         width: var(--logo-mobile);
         height: var(--logo-mobile);
-        margin: 20px auto 40px;
+        margin: 10px auto 20px;
+        /* Espaço reduzido */
     }
 
     .sacred-core:hover {
         transform: none;
     }
-
-    /* Remove zoom no mobile */
 
     .cardinal-nav {
         position: relative;
@@ -545,7 +541,6 @@ body.dark-mode .social-dock i {
         gap: 0;
     }
 
-    /* Botão Mobile - Lista Simples e Limpa */
     .nav-item {
         position: relative;
         top: auto;
@@ -553,14 +548,13 @@ body.dark-mode .social-dock i {
         right: auto;
         bottom: auto;
         transform: none;
-        padding: 18px 0;
+        padding: 16px 0;
         width: 100%;
         flex-direction: row;
         justify-content: center;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    /* Ajuste para Dark Mode Mobile */
     body.dark-mode .nav-item {
         border-color: rgba(255, 255, 255, 0.15);
     }
@@ -571,7 +565,6 @@ body.dark-mode .social-dock i {
         letter-spacing: 0.1em;
     }
 
-    /* No mobile, o hover pode não funcionar bem, então o click/active deve dar feedback */
     .nav-item:active .nav-text {
         color: #000;
         font-weight: 600;
@@ -588,11 +581,14 @@ body.dark-mode .social-dock i {
         transform: translateY(100%);
     }
 
+    /* Footer com espaçamento seguro */
     .minimal-footer {
         position: relative;
         bottom: auto;
         right: auto;
-        margin: 40px auto 20px;
+        margin: 20px auto 40px;
+        /* Mais espaço embaixo para garantir que apareça */
         align-items: center;
+        padding-bottom: 20px;
     }
 }
